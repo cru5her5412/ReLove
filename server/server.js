@@ -17,6 +17,6 @@ app.get("/submit-item", function (request, response) {
 app.get("/view-items", async function (request, response) {
   viewItems(request, response);
 });
-async function homePage() {}
-async function submitItem() {}
-async function viewItems() {}
+async function homePage(request, response) {}
+async function submitItem(request, response) {}
+async function viewItems(request, response) {}
