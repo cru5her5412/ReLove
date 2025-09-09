@@ -105,3 +105,47 @@ nav a:focus {
     font-size: 1.4rem;
     margin-bottom: 1rem;
 }
+
+.how-it-works {
+    background-color: lightgray;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.how-it-works h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.step {
+    padding: 2rem;
+    border-radius: 10px;
+    flex: 1 1 280px;
+}
+
+.step h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem auto; 
+}
