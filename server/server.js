@@ -18,7 +18,9 @@ app.post("/submit-item", function (request, response) {
 app.get("/view-items", async function (request, response) {
   viewItems(request, response);
 });
-async function homePage(request, response) {}
+async function homePage(request, response) {
+  response.json("Server");
+}
 async function submitItem(request, response) {
   const body = request.body;
   db.query(
