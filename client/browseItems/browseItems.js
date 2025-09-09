@@ -1,9 +1,10 @@
 const browseContainer = document.getElementById("browseContainer");
+const itemFilterCondition = document.getElementById("itemCondition");
+const itemFilterCategory = document.getElementById("itemCategory");
+let parsedData;
 async function createBrowseList() {
-  const dataFromDatabase = await fetch(
-    "https://relove-e3km.onrender.com/view-items"
-  );
-  const parsedData = await dataFromDatabase.json();
+  const dataFromDatabase = await fetch("http://localhost:8080/view-items");
+  parsedData = await dataFromDatabase.json();
   for (let i = 0; i < parsedData.length; i++) {
     createCustomElement(
       parsedData[i].itemname,
@@ -55,4 +56,28 @@ function createCustomElement(
   element.appendChild(userLocationElement);
   element.appendChild(dateElement);
 }
+function filterBrowseList() {
+  for (let i = 0; i < parsedData.length; i++) {
+    const currElement = document.getElementById(`itemNo${i}`);
+    console.log(itemFilterCategory.value);
+    if (itemFilterCondition.value !== "") {
+      if (currElement.children[1].textContent !== itemFilterCategory.value) {
+        currElement.style.display = "none";
+      } else {
+        currElement.style.display = "block";
+      }
+    }
+    if (itemFilterCondition.value !== "") {
+      if (currElement.children[5].textContent !== itemFilterCondition.value) {
+        currElement.style.display = "none";
+      } else {
+        currElement.style.display = "block";
+      }
+    }
+  }
+}
 createBrowseList();
+
+document.addEventListener("click", function () {
+  filterBrowseList();
+});
