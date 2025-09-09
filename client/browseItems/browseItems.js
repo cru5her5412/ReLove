@@ -3,7 +3,9 @@ const itemFilterCondition = document.getElementById("itemCondition");
 const itemFilterCategory = document.getElementById("itemCategory");
 let parsedData;
 async function createBrowseList() {
-  const dataFromDatabase = await fetch("http://localhost:8080/view-items");
+  const dataFromDatabase = await fetch(
+    "https://relove-e3km.onrender.com/view-items"
+  );
   parsedData = await dataFromDatabase.json();
   for (let i = 0; i < parsedData.length; i++) {
     createCustomElement(
