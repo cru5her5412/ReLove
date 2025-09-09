@@ -59,20 +59,18 @@ function createCustomElement(
 function filterBrowseList() {
   for (let i = 0; i < parsedData.length; i++) {
     const currElement = document.getElementById(`itemNo${i}`);
+    console.log(currElement.children[1].textContent);
     console.log(itemFilterCategory.value);
-    if (itemFilterCondition.value !== "") {
-      if (currElement.children[1].textContent !== itemFilterCategory.value) {
-        currElement.style.display = "none";
-      } else {
-        currElement.style.display = "block";
-      }
-    }
-    if (itemFilterCondition.value !== "") {
-      if (currElement.children[5].textContent !== itemFilterCondition.value) {
-        currElement.style.display = "none";
-      } else {
-        currElement.style.display = "block";
-      }
+    currElement.style.display = "block";
+    if (
+      (currElement.children[1].textContent == itemFilterCategory.value ||
+        itemFilterCategory.value == "") &&
+      (currElement.children[2].textContent == itemFilterCondition.value ||
+        itemFilterCondition.value == "")
+    ) {
+      currElement.style.display = "block";
+    } else {
+      currElement.style.display = "none";
     }
   }
 }
