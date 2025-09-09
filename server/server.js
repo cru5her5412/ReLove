@@ -36,4 +36,7 @@ async function submitItem(request, response) {
   );
   response.json("submission received");
 }
-async function viewItems(request, response) {}
+async function viewItems(request, response) {
+  let tableData = await db.query(`SELECT * FROM relovedatabase`);
+  response.json(tableData.rows);
+}
