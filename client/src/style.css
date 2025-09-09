@@ -107,9 +107,11 @@ nav a:focus {
 }
 
 .how-it-works {
-    background-color: lightgray;
+    background-color: whitesmoke;
     padding: 4rem 2rem;
     text-align: center;
+    margin: 2rem;
+    border-radius: 12px;
 }
 
 .how-it-works h2 {
@@ -148,4 +150,12 @@ nav a:focus {
     align-items: center;
     justify-content: center;
     margin: 0 auto 1rem auto; 
+}
+
+
+footer {
+    color: #1F1F1F;
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 0.9rem;
 }
