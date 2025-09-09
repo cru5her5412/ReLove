@@ -151,3 +151,11 @@ nav a:focus {
     justify-content: center;
     margin: 0 auto 1rem auto; 
 }
+
+
+footer {
+    color: #1F1F1F;
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 0.9rem;
+}
