@@ -21,7 +21,19 @@ app.get("/view-items", async function (request, response) {
 async function homePage(request, response) {}
 async function submitItem(request, response) {
   const body = request.body;
-  console.log(body.formData.itemName);
+  db.query(
+    `INSERT INTO reloveDatabase (itemname, itemdescription, itemcategory, itemcondition, userlocation, useremail, userphonenumber, claimed) VALUES($1, $2, $3, $4, $5, $6, $7, $8)`,
+    [
+      body.formData.itemName,
+      body.formData.itemDescription,
+      body.formData.itemCategory,
+      body.formData.itemCondition,
+      body.formData.userLocation,
+      body.formData.userEmail,
+      body.formData.userPhoneNumber,
+      false,
+    ]
+  );
   response.json("submission received");
 }
 async function viewItems(request, response) {}
