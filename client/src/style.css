@@ -107,9 +107,11 @@ nav a:focus {
 }
 
 .how-it-works {
-    background-color: lightgray;
+    background-color: whitesmoke;
     padding: 4rem 2rem;
     text-align: center;
+    margin: 2rem;
+    border-radius: 12px;
 }
 
 .how-it-works h2 {
