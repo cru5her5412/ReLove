@@ -11,7 +11,8 @@ async function createBrowseList() {
       parsedData[i].itemcondition,
       parsedData[i].itemdescription,
       parsedData[i].userlocation,
-      parsedData[i].created_at
+      parsedData[i].created_at,
+      i
     );
   }
 }
@@ -21,22 +22,31 @@ function createCustomElement(
   itemCondition,
   itemDescription,
   userLocation,
-  date
+  date,
+  i
 ) {
   const element = document.createElement("div");
+  element.className = `individualItem`;
+  element.id = `itemNo${i}`;
   browseContainer.appendChild(element);
   const itemNameElement = document.createElement("h3");
   itemNameElement.textContent = itemName;
+  itemNameElement.className = "itemName";
   const itemCategoryElement = document.createElement("h4");
   itemCategoryElement.textContent = itemCategory;
+  itemCategoryElement.className = "itemCategory";
   const itemConditionElement = document.createElement("h4");
   itemConditionElement.textContent = itemCondition;
+  itemConditionElement.className = "itemCondition";
   const itemDescriptionElement = document.createElement("p");
   itemDescriptionElement.textContent = itemDescription;
+  itemDescriptionElement.className = "itemDescription";
   const userLocationElement = document.createElement("h4");
   userLocationElement.textContent = userLocation;
+  userLocationElement.className = "userLocation";
   const dateElement = document.createElement("h4");
   dateElement.textContent = date;
+  dateElement.className = "dateAdded";
 
   element.appendChild(itemNameElement);
   element.appendChild(itemCategoryElement);
