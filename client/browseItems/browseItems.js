@@ -30,7 +30,8 @@ async function createBrowseList() {
       parsedData[i].itemdescription,
       parsedData[i].userlocation,
       parsedData[i].created_at,
-      i
+      i,
+      parsedData[i].id
     );
   }
   setInterval(searchAndFilterBrowseList, 500); //starts refreshing search and filters every 0.5 seconds
@@ -42,7 +43,8 @@ function createCustomElement(
   itemDescription,
   userLocation,
   date,
-  i
+  i,
+  dbID
 ) {
   //takes input of all parts of database we want to show on a card for collection, setting text content to be data from the database
   const element = document.createElement("div");
@@ -67,13 +69,21 @@ function createCustomElement(
   const dateElement = document.createElement("h4");
   dateElement.textContent = date;
   dateElement.className = "dateAdded";
-
+  const claimButton = document.createElement("button");
+  claimButton.id = `buttonNo${i}`;
+  claimButton.textContent = "Claim";
+  claimButton.className = "claimButton";
+  claimButton.addEventListener("click", function () {
+    //creates listener for each button with their database id as an argument
+    itemClaim(dbID);
+  });
   element.appendChild(itemNameElement); //Adding rest of elements as children of main element in the DOM
   element.appendChild(itemCategoryElement);
   element.appendChild(itemConditionElement);
   element.appendChild(itemDescriptionElement);
   element.appendChild(userLocationElement);
   element.appendChild(dateElement);
+  element.appendChild(claimButton);
 }
 function searchAndFilterBrowseList() {
   for (let i = 0; i < parsedData.length; i++) {
@@ -95,5 +105,14 @@ function searchAndFilterBrowseList() {
     }
   }
 }
-
+async function itemClaim(i) {
+  const sendingClaimUpdate = fetch(
+    "https://relove-e3km.onrender.com/claim-item-update",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ i }),
+    }
+  ); //sends a post to the server address '/claim-item-update' containing the id of the element that was claimed
+}
 createBrowseList();
