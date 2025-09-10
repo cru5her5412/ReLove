@@ -17,6 +17,16 @@ const itemFilterCondition = document.getElementById("itemCondition"); //select w
 const itemFilterCategory = document.getElementById("itemCategory"); //select where you can pick a category to filter by
 const itemSearchBar = document.getElementById("searchBar"); //search bar input element
 let parsedData; //initialised to become global variable
+let claimedIds = localStorage.getItem("userClaimedIds"); //get claimed ids from localStorage
+
+let claimedId = []; //sets returned value from next for loop to prevent the output not being defined if no local storage
+if (claimedIds) {
+  //if something obtained from local storage, add all numbers in the list (formatted with commas)
+  claimedIds = JSON.parse(claimedIds);
+  for (let j = 0; j < claimedIds.length; j++) {
+    claimedId.push(claimedIds[j]);
+  }
+}
 async function createBrowseList() {
   const dataFromDatabase = await fetch(
     "https://relove-e3km.onrender.com/view-items"
@@ -92,13 +102,6 @@ function createCustomElement(
   element.appendChild(claimButton);
 }
 function searchAndFilterBrowseList() {
-  let claimedIds = localStorage.getItem("userClaimedIds");
-  let claimedId = [];
-  if (claimedIds) {
-    for (let j = 0; j < claimedIds.length; j += 2) {
-      claimedId.push(claimedIds[j]);
-    }
-  }
   for (let i = 0; i < parsedData.length; i++) {
     const currElement = document.getElementById(`itemNo${i}`); //for all elements, get the current element based on their id(added in creation step)
     if (
@@ -110,8 +113,7 @@ function searchAndFilterBrowseList() {
         itemFilterCategory.value == "") &&
       (currElement.children[2].textContent == itemFilterCondition.value ||
         itemFilterCondition.value == "") &&
-      (parsedData[i].claimed == false ||
-        claimedId.includes(parsedData[i].id.toString()))
+      (parsedData[i].claimed == false || claimedId.includes(parsedData[i].id))
     ) {
       //if(current element text content contains the text in the search bar && the text content of the category element matches the category filter (or it is blank) && the text content of the category element matches the condition filter (or it is blank) ){set display to block}
       currElement.style.display = "block";
@@ -132,10 +134,15 @@ async function itemClaim(dbId) {
   let arrayToLocalStorage = [];
   let toAddtoArray = localStorage.getItem("userClaimedIds");
   if (!toAddtoArray) {
-    toAddtoArray = "";
+    toAddtoArray = [];
   }
-
-  arrayToLocalStorage = toAddtoArray + `, ${dbId.toString()}`;
-  localStorage.setItem("userClaimedIds", arrayToLocalStorage);
+  toAddtoArray = JSON.parse(toAddtoArray);
+  for (let i = 0; i < toAddtoArray.length; i++) {
+    arrayToLocalStorage.push(toAddtoArray[i]);
+  }
+  if (!arrayToLocalStorage.includes(dbId)) {
+    arrayToLocalStorage.push(dbId);
+  }
+  localStorage.setItem("userClaimedIds", JSON.stringify(arrayToLocalStorage));
 }
 createBrowseList();
