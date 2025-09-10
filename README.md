@@ -77,3 +77,11 @@ Millions of usable items are thrown away every year while others in the same com
 ---
 
 ## 🧱 Challenges We Faced
+
+
+
+## 📚 References & Resources
+
+* [Javasript for active nav links](https://www.youtube.com/watch?v=bEOwXmd9Mc8)
+
+* [Active Navlinks](https://stackoverflow.com/questions/72050328/add-active-class-to-navbar-element-when-clicked)

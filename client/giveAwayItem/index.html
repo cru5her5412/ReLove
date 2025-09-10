@@ -4,13 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ReLove</title>
-     <link rel="stylesheet" href="../src/style.css" />
+    <link rel="stylesheet" href="../src/style.css" />
     <script type="module" src="./giveAwayItem.js" defer></script>
   </head>
   <body>
-    <a href="../">Home</a>
-    <a href="./">Give Away Items</a>
-    <a href="../browseItems/">Browse Items</a>
+    <header>
+      <!-- Navigation -->
+      <nav>
+    <a href="/">Home</a>
+    <a href="/">Give Away Items</a>
+    <a href="/browseItems/">Browse Items</a>
+    </nav>
+    </header>
+<!-- Form -->
+        <main class="form-wrapper">
+  <section class="form-container">
+    <h1>Give Away an Item</h1>
     <form id="inputForm">
       <label for="itemName">Item Title</label>
       <input type="text" name="itemName" id="itemName" />
@@ -48,5 +57,9 @@
       <input type="text" name="userPhoneNumber" id="userPhoneNumber" />
       <button type="submit">Post Item</button>
     </form>
+        </section>
+
+</main>
+
   </body>
 </html>
