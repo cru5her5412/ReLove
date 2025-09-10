@@ -10,6 +10,9 @@ document.querySelectorAll("nav a").forEach((link) => {
 //================================================
 //
 
+// Popup modal message variables
+const popupModal = document.getElementById("popupModal");
+const closePopupButton = document.getElementById("close-popup-button");
 // POST code
 
 const form = document.querySelector("#inputForm"); //selects the form element
@@ -23,4 +26,15 @@ form.addEventListener("submit", async function (event) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ formData }),
   });
+
+  // Trigger popup modal message code
+  if (response.ok) {
+    popupModal.hidden = false; // A wild popup appears!
+  }
+});
+
+// Popup modal message close button functionality
+
+closePopupButton.addEventListener("click", function () {
+  popupModal.hidden = true; // Popup hides again
 });
