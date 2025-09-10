@@ -46,6 +46,14 @@ nav a:focus {
     text-decoration: underline;
 }
 
+nav a.active {
+    color: black;
+    font-weight: 700;
+    border-bottom: 2px solid black;
+}
+
+
+
 .hero {
     background-color: white;
     padding: 4rem 2rem;
@@ -159,3 +167,4 @@ footer {
     padding: 1rem 0;
     font-size: 0.9rem;
 }
+
