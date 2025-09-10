@@ -74,6 +74,7 @@ function createCustomElement(
   claimButton.textContent = "Claim";
   claimButton.className = "claimButton";
   claimButton.addEventListener("click", function () {
+    //creates listener for each button with their database id as an argument
     itemClaim(dbID);
   });
   element.appendChild(itemNameElement); //Adding rest of elements as children of main element in the DOM
@@ -112,6 +113,6 @@ async function itemClaim(i) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ i }),
     }
-  );
+  ); //sends a post to the server address '/claim-item-update' containing the id of the element that was claimed
 }
 createBrowseList();
