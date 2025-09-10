@@ -29,12 +29,12 @@ form.addEventListener("submit", async function (event) {
 
   // Trigger popup modal message code
   if (response.ok) {
-    popupModal.hidden = false; // A wild popup appears!
+    popupModal.classList.add("show"); // A wild popup appears!
   }
 });
 
 // Popup modal message close button functionality
 
 closePopupButton.addEventListener("click", function () {
-  popupModal.hidden = true; // Popup hides again
+  popupModal.classList.remove("show"); // Popup hides again
 });
