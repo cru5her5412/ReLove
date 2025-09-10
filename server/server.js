@@ -1,5 +1,5 @@
 import cors from "cors";
-import express, { text } from "express";
+import express, { request, text } from "express";
 import { db } from "./dbConnections.js";
 const app = express();
 app.use(express.json());
@@ -14,6 +14,9 @@ app.get("/", function (request, response) {
 app.get("/submit-item", function (request, response) {});
 app.post("/submit-item", function (request, response) {
   submitItem(request, response);
+});
+app.post("/claim-item-update", function (request, response) {
+  claimItem(request, response);
 });
 app.get("/view-items", async function (request, response) {
   viewItems(request, response);
@@ -41,4 +44,9 @@ async function submitItem(request, response) {
 async function viewItems(request, response) {
   let tableData = await db.query(`SELECT * FROM relovedatabase`);
   response.json(tableData.rows);
+}
+async function claimItem(request, response) {
+  const body = request.body;
+  console.log(body.i);
+  //db.query(`UPDATE relove SET claimed = true WHERE id=${body.i}`);
 }
