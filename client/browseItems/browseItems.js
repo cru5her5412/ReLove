@@ -1,3 +1,17 @@
+// Active Navlinks
+
+document.querySelectorAll("nav a").forEach((link) => {
+  if (link.href === window.location.href) {
+    link.classList.add("active");
+    link.setAttribute("aria-current", "page");
+  }
+});
+
+//================================================
+//
+
+// GET code for viewing items
+
 const browseContainer = document.getElementById("browseContainer");
 const itemFilterCondition = document.getElementById("itemCondition");
 const itemFilterCategory = document.getElementById("itemCategory");

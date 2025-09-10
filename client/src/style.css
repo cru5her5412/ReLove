@@ -46,6 +46,14 @@ nav a:focus {
     text-decoration: underline;
 }
 
+nav a.active {
+    color: black;
+    font-weight: 700;
+    border-bottom: 2px solid black;
+}
+
+
+
 .hero {
     background-color: white;
     padding: 4rem 2rem;
@@ -241,3 +249,4 @@ button:focus {
     font-size: 1.5rem;
     }
 }
+
