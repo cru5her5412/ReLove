@@ -25,12 +25,14 @@
         <p>Fill out the form below to list an item you'd like to give away to the community</p>
         <form id="inputForm">
           <label for="itemName">Item Title</label>
-          <input type="text" name="itemName" id="itemName" placeholder="e.g., Blue Ikea Bookshelf"/>
+
+          <input type="text" name="itemName" id="itemName" placeholder="e.g., Blue Ikea Bookshelf" required/>
           <label for="itemDescription">Description</label>
-          <input type="text" name="itemDescription" id="itemDescription" placeholder="Describe the item's condition, size, features etc."/>
+          <input type="text" name="itemDescription" id="itemDescription" placeholder="Describe the item's condition, size, features etc."  required/>
+
 
           <label for="itemCategory">Category</label>
-          <select name="itemCategory" id="itemCategory">
+          <select name="itemCategory" id="itemCategory" required>
             <option value="">Select a Category</option>
             <option value="furniture">Furniture</option>
             <option value="electronics">Electronics</option>
@@ -43,7 +45,7 @@
           </select>
 
           <label for="itemCondition">Condition</label>
-          <select name="itemCondition" id="itemCondition">
+          <select name="itemCondition" id="itemCondition" required>
             <option value="">Select Condition</option>
             <option value="new">New</option>
             <option value="like-new">Excellent</option>
@@ -53,11 +55,12 @@
           </select>
 
           <label for="userLocation">Location/Area</label>
-          <input type="text" name="userLocation" id="userLocation" placeholder="e.g., Mayfair, London, Postcode"/>
+          <input type="text" name="userLocation" id="userLocation" placeholder="e.g., Mayfair, London, Postcode"  required/>
           <label for="userEmail">Your Email</label>
-          <input type="text" name="userEmail" id="userEmail" placeholder="Your Email" />
+          <input type="text" name="userEmail" id="userEmail" placeholder="Your Email"  required/>
           <label for="userPhoneNumber">Your Phone Number</label>
-          <input type="text" name="userPhoneNumber" id="userPhoneNumber" placeholder="Your Phone Number"/>
+          <input type="text" name="userPhoneNumber" id="userPhoneNumber" placeholder="Your Phone Number"  required/>
+
           <button type="submit">Post Item</button>
         </form>
       </section>
