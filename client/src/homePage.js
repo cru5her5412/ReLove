@@ -5,4 +5,4 @@ document.querySelectorAll("nav a").forEach((link) => {
     link.classList.add("active");
     link.setAttribute("aria-current", "page");
     }
-
+    });
