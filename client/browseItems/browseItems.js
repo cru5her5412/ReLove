@@ -106,10 +106,13 @@ function searchAndFilterBrowseList() {
   }
 }
 async function itemClaim(i) {
-  const sendingClaimUpdate = fetch("http://localhost:8080/claim-item-update", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ i }),
-  }); //sends a post to the server address '/claim-item-update' containing the id of the element that was claimed
+  const sendingClaimUpdate = fetch(
+    "https://relove-e3km.onrender.com/claim-item-update",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ i }),
+    }
+  ); //sends a post to the server address '/claim-item-update' containing the id of the element that was claimed
 }
 createBrowseList();
