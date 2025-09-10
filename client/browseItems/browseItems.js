@@ -15,6 +15,7 @@ document.querySelectorAll("nav a").forEach((link) => {
 const browseContainer = document.getElementById("browseContainer");
 const itemFilterCondition = document.getElementById("itemCondition");
 const itemFilterCategory = document.getElementById("itemCategory");
+const itemSearchBar = document.getElementById("searchBar");
 let parsedData;
 async function createBrowseList() {
   const dataFromDatabase = await fetch(
@@ -32,6 +33,7 @@ async function createBrowseList() {
       i
     );
   }
+  setInterval(searchAndFilterBrowseList, 500);
 }
 function createCustomElement(
   itemName,
@@ -72,13 +74,14 @@ function createCustomElement(
   element.appendChild(userLocationElement);
   element.appendChild(dateElement);
 }
-function filterBrowseList() {
+function searchAndFilterBrowseList() {
   for (let i = 0; i < parsedData.length; i++) {
     const currElement = document.getElementById(`itemNo${i}`);
-    console.log(currElement.children[1].textContent);
-    console.log(itemFilterCategory.value);
-    currElement.style.display = "block";
     if (
+      (currElement.children[0].textContent
+        .toLowerCase()
+        .includes(itemSearchBar.value.toLowerCase()) ||
+        itemSearchBar.value == "") &&
       (currElement.children[1].textContent == itemFilterCategory.value ||
         itemFilterCategory.value == "") &&
       (currElement.children[2].textContent == itemFilterCondition.value ||
@@ -90,8 +93,5 @@ function filterBrowseList() {
     }
   }
 }
-createBrowseList();
 
-document.addEventListener("click", function () {
-  filterBrowseList();
-});
+createBrowseList();
