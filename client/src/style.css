@@ -319,6 +319,7 @@ button:focus {
   background-color: rgba(0, 0, 0, 0.4);
   opacity: 0;
   transition: opacity 0.3s ease;
+
   pointer-events: none;
 
   z-index: 5;
@@ -335,6 +336,12 @@ button:focus {
   border: 2px solid black;
   border-radius: 12px;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
   box-shadow: 0 8px 16px rgbs(0, 0, 0, 0.3);
 
   width: 80%;
@@ -344,8 +351,57 @@ button:focus {
   transition: transform 0.3s ease;
 }
 
+.popup-content button {
+  margin-top: 1rem;
+}
+
 .popup.show .popup-content {
   transform: scale(1);
 }
 
+/* */
+/* */
+
+/* Confetti styling */
+
+#confetti-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
+  overflow: hidden;
+
+  z-index: 6;
+}
+
+.confetti {
+  position: absolute;
+  background-color: hsl(var(--hue), 85%, 60%);
+  opacity: 0.9;
+  animation: fall linear forwards;
+  border-radius: 2px;
+}
+
+.pigeon {
+  position: absolute;
+  animation: pigeon-fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translate(var(--x-drift), 100vh) rotate(var(--rotate-end));
+    opacity: 0;
+  }
+}
+
+@keyframes pigeon-fall {
+  to {
+    transform: translate(var(--x-drift), 100vh) rotate(var(--rotate-end));
+    opacity: 0;
+  }
+}
 /* */
