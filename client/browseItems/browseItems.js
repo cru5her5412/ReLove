@@ -18,8 +18,9 @@ const itemFilterCategory = document.getElementById("itemCategory"); //select whe
 const itemSearchBar = document.getElementById("searchBar"); //search bar input element
 let parsedData; //initialised to become global variable
 async function createBrowseList() {
-  //temp: https://relove-e3km.onrender.com/
-  const dataFromDatabase = await fetch("http://localhost:8080/view-items"); //getting data from server from database
+  const dataFromDatabase = await fetch(
+    "https://relove-e3km.onrender.com/view-items"
+  ); //getting data from server from database
   parsedData = await dataFromDatabase.json(); //convert to readable format
   for (let i = 0; i < parsedData.length; i++) {
     createCustomElement(
@@ -104,10 +105,13 @@ function searchAndFilterBrowseList() {
   }
 }
 async function itemClaim(i) {
-  const sendingClaimUpdate = fetch("http://localhost:8080/claim-item-update", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ i }),
-  });
+  const sendingClaimUpdate = fetch(
+    "https://relove-e3km.onrender.com/claim-item-update",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ i }),
+    }
+  );
 }
 createBrowseList();
