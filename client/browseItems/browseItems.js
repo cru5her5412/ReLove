@@ -31,7 +31,8 @@ async function createBrowseList() {
       parsedData[i].userlocation,
       parsedData[i].created_at,
       i,
-      parsedData[i].id
+      parsedData[i].id,
+      parsedData[i].claimed
     );
   }
   setInterval(searchAndFilterBrowseList, 500); //starts refreshing search and filters every 0.5 seconds
@@ -44,7 +45,8 @@ function createCustomElement(
   userLocation,
   date,
   i,
-  dbID
+  dbID,
+  claimed
 ) {
   //takes input of all parts of database we want to show on a card for collection, setting text content to be data from the database
   const element = document.createElement("div");
@@ -53,7 +55,11 @@ function createCustomElement(
   browseContainer.appendChild(element); //adding container element to DOM
   const itemNameElement = document.createElement("h3");
   itemNameElement.textContent = itemName;
-  itemNameElement.className = "itemName";
+  if (claimed == false) {
+    itemNameElement.className = "itemName";
+  } else if (claimed == true) {
+    itemNameElement.className = `itemName claimed claimID${dbID}`;
+  }
   const itemCategoryElement = document.createElement("h4");
   itemCategoryElement.textContent = itemCategory;
   itemCategoryElement.className = "itemCategory";
@@ -86,6 +92,13 @@ function createCustomElement(
   element.appendChild(claimButton);
 }
 function searchAndFilterBrowseList() {
+  let claimedIds = localStorage.getItem("userClaimedIds");
+  let claimedId = [];
+  if (claimedIds) {
+    for (let j = 0; j < claimedIds.length; j += 2) {
+      claimedId.push(claimedIds[j]);
+    }
+  }
   for (let i = 0; i < parsedData.length; i++) {
     const currElement = document.getElementById(`itemNo${i}`); //for all elements, get the current element based on their id(added in creation step)
     if (
@@ -96,7 +109,9 @@ function searchAndFilterBrowseList() {
       (currElement.children[1].textContent == itemFilterCategory.value ||
         itemFilterCategory.value == "") &&
       (currElement.children[2].textContent == itemFilterCondition.value ||
-        itemFilterCondition.value == "")
+        itemFilterCondition.value == "") &&
+      (parsedData[i].claimed == false ||
+        claimedId.includes(parsedData[i].id.toString()))
     ) {
       //if(current element text content contains the text in the search bar && the text content of the category element matches the category filter (or it is blank) && the text content of the category element matches the condition filter (or it is blank) ){set display to block}
       currElement.style.display = "block";
@@ -105,14 +120,22 @@ function searchAndFilterBrowseList() {
     }
   }
 }
-async function itemClaim(i) {
+async function itemClaim(dbId) {
   const sendingClaimUpdate = fetch(
     "https://relove-e3km.onrender.com/claim-item-update",
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ i }),
+      body: JSON.stringify({ dbId }),
     }
   ); //sends a post to the server address '/claim-item-update' containing the id of the element that was claimed
+  let arrayToLocalStorage = [];
+  let toAddtoArray = localStorage.getItem("userClaimedIds");
+  if (!toAddtoArray) {
+    toAddtoArray = "";
+  }
+
+  arrayToLocalStorage = toAddtoArray + `, ${dbId.toString()}`;
+  localStorage.setItem("userClaimedIds", arrayToLocalStorage);
 }
 createBrowseList();
