@@ -12,7 +12,8 @@ document.querySelectorAll("nav a").forEach((link) => {
 
 // POST code
 
-const form = document.querySelector("#inputForm");
+const form = document.querySelector("#inputForm"); //selects the form element
+//on submit button press, prevents default, creates form template using form, inserts data from form into template in new object, sends said object over to the server's /submit-item address as JSON to add to the database
 form.addEventListener("submit", async function (event) {
   event.preventDefault();
   const formTemplate = new FormData(form);

@@ -12,16 +12,16 @@ document.querySelectorAll("nav a").forEach((link) => {
 
 // GET code for viewing items
 
-const browseContainer = document.getElementById("browseContainer");
-const itemFilterCondition = document.getElementById("itemCondition");
-const itemFilterCategory = document.getElementById("itemCategory");
-const itemSearchBar = document.getElementById("searchBar");
-let parsedData;
+const browseContainer = document.getElementById("browseContainer"); //box all items go in
+const itemFilterCondition = document.getElementById("itemCondition"); //select where you can pick a condition to filter by
+const itemFilterCategory = document.getElementById("itemCategory"); //select where you can pick a category to filter by
+const itemSearchBar = document.getElementById("searchBar"); //search bar input element
+let parsedData; //initialised to become global variable
 async function createBrowseList() {
   const dataFromDatabase = await fetch(
     "https://relove-e3km.onrender.com/view-items"
-  );
-  parsedData = await dataFromDatabase.json();
+  ); //getting data from server from database
+  parsedData = await dataFromDatabase.json(); //convert to readable format
   for (let i = 0; i < parsedData.length; i++) {
     createCustomElement(
       parsedData[i].itemname,
@@ -33,7 +33,7 @@ async function createBrowseList() {
       i
     );
   }
-  setInterval(searchAndFilterBrowseList, 500);
+  setInterval(searchAndFilterBrowseList, 500); //starts refreshing search and filters every 0.5 seconds
 }
 function createCustomElement(
   itemName,
@@ -44,10 +44,11 @@ function createCustomElement(
   date,
   i
 ) {
+  //takes input of all parts of database we want to show on a card for collection, setting text content to be data from the database
   const element = document.createElement("div");
   element.className = `individualItem`;
   element.id = `itemNo${i}`;
-  browseContainer.appendChild(element);
+  browseContainer.appendChild(element); //adding container element to DOM
   const itemNameElement = document.createElement("h3");
   itemNameElement.textContent = itemName;
   itemNameElement.className = "itemName";
@@ -67,7 +68,7 @@ function createCustomElement(
   dateElement.textContent = date;
   dateElement.className = "dateAdded";
 
-  element.appendChild(itemNameElement);
+  element.appendChild(itemNameElement); //Adding rest of elements as children of main element in the DOM
   element.appendChild(itemCategoryElement);
   element.appendChild(itemConditionElement);
   element.appendChild(itemDescriptionElement);
@@ -76,7 +77,7 @@ function createCustomElement(
 }
 function searchAndFilterBrowseList() {
   for (let i = 0; i < parsedData.length; i++) {
-    const currElement = document.getElementById(`itemNo${i}`);
+    const currElement = document.getElementById(`itemNo${i}`); //for all elements, get the current element based on their id(added in creation step)
     if (
       (currElement.children[0].textContent
         .toLowerCase()
@@ -87,9 +88,10 @@ function searchAndFilterBrowseList() {
       (currElement.children[2].textContent == itemFilterCondition.value ||
         itemFilterCondition.value == "")
     ) {
+      //if(current element text content contains the text in the search bar && the text content of the category element matches the category filter (or it is blank) && the text content of the category element matches the condition filter (or it is blank) ){set display to block}
       currElement.style.display = "block";
     } else {
-      currElement.style.display = "none";
+      currElement.style.display = "none"; //hides element if condition isnt met
     }
   }
 }
