@@ -90,3 +90,8 @@ Millions of usable items are thrown away every year while others in the same com
 
 * [Form Shadow and style](https://codepen.io/haibnu/pen/DrVweV)
 * [Box-Shadow](https://css-tricks.com/almanac/properties/b/box-shadow/)
+* [Dummy Data](https://www.youtube.com/watch?v=NaDNgroJ7Cg)
+* [Responsive Products](https://www.youtube.com/watch?v=F24tAMLoOEw)
+* [Images in Javascript](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/Image)
+* [Images in Javascript](https://www.youtube.com/watch?v=HWHfzt1kp84)
+* [Javascript Objects](https://www.w3schools.com/js/js_objects.asp)

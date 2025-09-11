@@ -18,10 +18,13 @@ const itemFilterCategory = document.getElementById("itemCategory"); //select whe
 const itemSearchBar = document.getElementById("searchBar"); //search bar input element
 let parsedData; //initialised to become global variable
 async function createBrowseList() {
-  const dataFromDatabase = await fetch(
+  const response = await fetch (
+  // const dataFromDatabase = await fetch( "Callum"
     "https://relove-e3km.onrender.com/view-items"
   ); //getting data from server from database
-  parsedData = await dataFromDatabase.json(); //convert to readable format
+  parsedData = await response.json();
+  browseContainer.innerHTML = "";
+  // parsedData = await dataFromDatabase.json(); //convert to readable format "Callum's"
   for (let i = 0; i < parsedData.length; i++) {
     createCustomElement(
       parsedData[i].itemname,
@@ -34,7 +37,11 @@ async function createBrowseList() {
       parsedData[i].id
     );
   }
-  setInterval(searchAndFilterBrowseList, 500); //starts refreshing search and filters every 0.5 seconds
+  // setInterval(searchAndFilterBrowseList, 500); //starts refreshing search and filters every 0.5 seconds. "Callum"
+  itemSearchBar.addEventListener("input", searchAndFilterBrowseList);
+itemFilterCategory.addEventListener("change", searchAndFilterBrowseList);
+itemFilterCondition.addEventListener("change", searchAndFilterBrowseList);
+
 }
 function createCustomElement(
   itemName,
@@ -48,20 +55,54 @@ function createCustomElement(
 ) {
   //takes input of all parts of database we want to show on a card for collection, setting text content to be data from the database
   const element = document.createElement("div");
-  element.className = `individualItem`;
+  element.className = `card individualItem`; 
   element.id = `itemNo${i}`;
+  element.dataset.dbId = dbID;
   browseContainer.appendChild(element); //adding container element to DOM
+
+const imagesByCategory = {
+  furniture: "./images/sofa.jpg",
+  electronics: "./images/robot.jpg",
+  clothing: ["./images/shirt.jpg", "./images/jacket.jpg",  "./images/cloth.jpg",],
+  books: "./images/book.jpg",
+  "toys-and-games": "./images/toys.jpg",
+  "home-and-garden": "./images/garden.jpg",
+  "sport-and-recreation": "./images/sport.jpg",
+  other: "./images/pokemon.jpg",
+};
+
+const imageElement = document.createElement("img");
+imageElement.src = imagesByCategory[itemCategory] || imagesByCategory.other;
+imageElement.alt = itemName;
+imageElement.className = "itemImage";
+element.appendChild(imageElement);
+
   const itemNameElement = document.createElement("h3");
   itemNameElement.textContent = itemName;
   itemNameElement.className = "itemName";
-  const itemCategoryElement = document.createElement("h4");
+  element.appendChild(itemNameElement);
+
+  const itemCategoryElement = document.createElement("p");
+itemCategoryElement.textContent = itemCategory;
+itemCategoryElement.className = "itemCategory";
+itemCategoryElement.style.display = "none"; 
+element.appendChild(itemCategoryElement);
+
+
+   // Container for details
+  const detailsContainer = document.createElement("div");
+  detailsContainer.className = "itemDetails";
+// ===================== Callum
+Category
+  const itemCategoryElement = document.createElement("h4"); "Callums"
   itemCategoryElement.textContent = itemCategory;
   itemCategoryElement.className = "itemCategory";
   const itemConditionElement = document.createElement("h4");
   itemConditionElement.textContent = itemCondition;
   itemConditionElement.className = "itemCondition";
+
   const itemDescriptionElement = document.createElement("p");
-  itemDescriptionElement.textContent = itemDescription;
+  itemDescriptionElement.textContent = itemDescription;  
   itemDescriptionElement.className = "itemDescription";
   const userLocationElement = document.createElement("h4");
   userLocationElement.textContent = userLocation;
@@ -85,11 +126,72 @@ function createCustomElement(
   element.appendChild(dateElement);
   element.appendChild(claimButton);
 }
+// ============================
+
+// just rearranged 
+
+// Condition
+  const itemConditionElement = document.createElement("p");
+  itemConditionElement.textContent = `Condition: ${itemCondition}`;
+  itemConditionElement.className = "itemCondition";
+  detailsContainer.appendChild(itemConditionElement);
+
+  // Description
+  const itemDescriptionElement = document.createElement("p");
+  itemDescriptionElement.textContent = `Details: ${itemDescription}`;
+  itemDescriptionElement.className = "itemDescription";
+  detailsContainer.appendChild(itemDescriptionElement);
+
+  // User Location
+  const userLocationElement = document.createElement("p");
+  userLocationElement.textContent = `Location: ${userLocation}`;
+  userLocationElement.className = "userLocation";
+  detailsContainer.appendChild(userLocationElement);
+
+  element.appendChild(detailsContainer);
+
+  // Format date nicely
+  const dateElement = document.createElement("p");
+  const dateObj = new Date(date);
+  dateElement.textContent = `Posted on: ${dateObj.toLocaleString()}`;
+  dateElement.className = "dateAdded";
+  element.appendChild(dateElement);
+
+  // Claim button
+  const claimButton = document.createElement("button");
+  claimButton.id = `buttonNo${i}`;
+  claimButton.textContent = "Claim";
+  claimButton.className = "claimButton";
+  claimButton.addEventListener("click", function () {
+    itemClaim(dbID);
+  });
+  element.appendChild(claimButton);
+}
 function searchAndFilterBrowseList() {
   for (let i = 0; i < parsedData.length; i++) {
     const currElement = document.getElementById(`itemNo${i}`); //for all elements, get the current element based on their id(added in creation step)
     if (
-      (currElement.children[0].textContent
+      (currElement.querySelector(".itemName").textContent
+        .toLowerCase()
+        .includes(itemSearchBar.value.toLowerCase()) ||
+        itemSearchBar.value == "") &&
+      (currElement.querySelector(".itemCategory").textContent
+        .toLowerCase()
+        .includes(itemFilterCategory.value.toLowerCase()) ||
+        itemFilterCategory.value == "") &&
+      (currElement.querySelector(".itemCondition").textContent
+        .toLowerCase()
+        .includes(itemFilterCondition.value.toLowerCase()) ||
+        itemFilterCondition.value == "")
+    ) {
+      currElement.style.display = "block";
+    } else {
+      currElement.style.display = "none";
+    }
+  }
+}
+// ======================================Callum
+      (currElement.children[0].textContent    //"Callums"
         .toLowerCase()
         .includes(itemSearchBar.value.toLowerCase()) ||
         itemSearchBar.value == "") &&
@@ -97,7 +199,7 @@ function searchAndFilterBrowseList() {
         itemFilterCategory.value == "") &&
       (currElement.children[2].textContent == itemFilterCondition.value ||
         itemFilterCondition.value == "")
-    ) {
+     {
       //if(current element text content contains the text in the search bar && the text content of the category element matches the category filter (or it is blank) && the text content of the category element matches the condition filter (or it is blank) ){set display to block}
       currElement.style.display = "block";
     } else {
@@ -105,6 +207,7 @@ function searchAndFilterBrowseList() {
     }
   }
 }
+// ==================================
 async function itemClaim(i) {
   const sendingClaimUpdate = fetch(
     "https://relove-e3km.onrender.com/claim-item-update",
