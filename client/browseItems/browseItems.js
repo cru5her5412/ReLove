@@ -55,7 +55,9 @@ async function createBrowseList() {
       item.created_at,
       i,
       item.id,
-      item.claimed
+      item.claimed,
+      item.useremail,
+      item.userphonenumber
     );
   }
 
@@ -75,7 +77,9 @@ function createCustomElement(
   date,
   i,
   dbID,
-  claimed
+  claimed,
+  giverEmail,
+  giverPhoneNumber
 ) {
   const element = document.createElement("div");
   element.className = "card individualItem";
@@ -157,6 +161,9 @@ function createCustomElement(
   if (claimed && !claimedIds.includes(dbID)) {
     claimButton.disabled = true;
     claimButton.textContent = "Claimed";
+  } else if (claimed && claimedIds.includes(dbID)) {
+    const contactInfo = document.createElement("p");
+    contactInfo.textContent = `Phone Number:\n${giverPhoneNumber}\nEmail:\n${giverEmail}`;
   }
 
   claimButton.addEventListener("click", function () {

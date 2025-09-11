@@ -47,7 +47,6 @@
             </select>
           </div>
 
-
           <div class="dropdown">
             <label for="itemCondition">Condition</label>
             <select name="itemCondition" id="itemCondition">
@@ -65,8 +64,22 @@
       <div class="browse-cards-wrapper">
         <div id="browseContainer"></div>
       </div>
+      <div
+        id="popupModal"
+        class="popup"
+        role="dialog"
+        aria-labelledby="popupTitle"
+        aria-modal="true"
+        hidden
+      >
+        <div class="popup-content">
+          <h2 id="popupTitle">🎉 Congratulations!</h2>
+          <p id="contactPopUpText">Your item has been posted successfully!</p>
+          <button id="close-popup-button">Close</button>
+        </div>
+      </div>
     </main>
- <!-- Footer -->
+    <!-- Footer -->
     <footer>
       <p>&copy; 2025 ReLove. All rights reserved.</p>
     </footer>
