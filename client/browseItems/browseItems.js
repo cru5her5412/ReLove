@@ -31,7 +31,11 @@ const browseContainer = document.getElementById("browseContainer");
 const itemFilterCondition = document.getElementById("itemCondition");
 const itemFilterCategory = document.getElementById("itemCategory");
 const itemSearchBar = document.getElementById("searchBar");
-
+const popupModal = document.getElementById("popupModal");
+const closePopupButton = document.getElementById("close-popup-button");
+closePopupButton.addEventListener("click", function () {
+  popupModal.classList.remove("show"); // Popup hides again
+});
 // Claimed IDs from localStorage
 let claimedIds = JSON.parse(localStorage.getItem("userClaimedIds")) || [];
 
@@ -162,8 +166,9 @@ function createCustomElement(
     claimButton.disabled = true;
     claimButton.textContent = "Claimed";
   } else if (claimed && claimedIds.includes(dbID)) {
-    const contactInfo = document.createElement("p");
-    contactInfo.textContent = `Phone Number:\n${giverPhoneNumber}\nEmail:\n${giverEmail}`;
+    const contactInfo = document.getElementById("contactPopUpText");
+    contactInfo.textContent = `Your claimed item: ${itemName}\nPhone Number:\n${giverPhoneNumber}\nEmail:\n${giverEmail}`;
+    popupModal.classList.add("show");
   }
 
   claimButton.addEventListener("click", function () {
