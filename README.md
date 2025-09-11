@@ -1,5 +1,5 @@
 
-# ♻️ PreLove - Give love, Get love
+# ♻️ ReLove - Give love, Get love
 
 **ReLove** is a full-stack web application that allows users to give away or browse preloved items in their community all while reducing waste and supporting a more sustainable future. Users can post items they no longer need and others can browse and contact the item owners via email or phone. It's a simple, community-driven platform designed to promote reuse and reduce waste and use  preloved items in a trusted, local network.. 
 
@@ -40,7 +40,10 @@ Millions of usable items are thrown away every year while others in the same com
 
 ## 🖼️ Wireframes
 
-[We can add screenshots or links to our wireframes here]
+![Homepage Wireframe](./Wireframe1.jpg)
+![Give Away Items Wireframe](./Wireframe2.jpg)
+![Browse Items Wireframe](./Wireframe3.jpg)
+
 
 ---
 
@@ -63,6 +66,7 @@ Millions of usable items are thrown away every year while others in the same com
 - Git & GitHub (Version Control)
 - Trello (Project Management)
 - Render (Deployment)
+- Figma (Wireframe)
 
 ---
 
@@ -95,3 +99,4 @@ Millions of usable items are thrown away every year while others in the same com
 * [Images in Javascript](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/Image)
 * [Images in Javascript](https://www.youtube.com/watch?v=HWHfzt1kp84)
 * [Javascript Objects](https://www.w3schools.com/js/js_objects.asp)
+* [HTML Form Standards](https://html.spec.whatwg.org/multipage/forms.html#categories)
