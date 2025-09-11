@@ -32,7 +32,7 @@ function triggerConfetti(duration = 10000, confettiPerTick = 7) {
       // Pigeon confetto code
       if (pigeonConfetto) {
         const pigeon = document.createElement("img");
-        pigeon.src = "/images/pigeon.png";
+        pigeon.src = "/confettiImage/pigeon.png";
         pigeon.classList.add("pigeon");
 
         const size = 40 + Math.random() * 30; // A random number is generated between 40 and 70.
