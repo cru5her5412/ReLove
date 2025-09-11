@@ -72,22 +72,26 @@ function createCustomElement(
   browseContainer.appendChild(element); //adding container element to DOM
 
   const imagesByCategory = {
-    furniture: "./images/sofa.jpg",
-    electronics: "./images/robot.jpg",
+    furniture: ["./images/sofa.jpg"],
+    electronics: ["./images/robot.jpg"],
     clothing: [
       "./images/shirt.jpg",
       "./images/jacket.jpg",
       "./images/cloth.jpg",
     ],
-    books: "./images/book.jpg",
-    "toys-and-games": "./images/toys.jpg",
-    "home-and-garden": "./images/garden.jpg",
-    "sport-and-recreation": "./images/sport.jpg",
-    other: "./images/pokemon.jpg",
+    books: ["./images/book.jpg"],
+    toysAndGames: ["./images/toy.jpg"],
+    homeAndGarden: ["./images/garden.jpg"],
+    sportAndRecreation: ["./images/sport.jpg"],
+    other: ["./images/pokemon.jpg"],
+    test: ["./images/pokemon.jpg"],
   };
 
   const imageElement = document.createElement("img");
-  imageElement.src = imagesByCategory[itemCategory] || imagesByCategory.other;
+  imageElement.src =
+    imagesByCategory[itemCategory][
+      Math.floor(Math.random() * (imagesByCategory[itemCategory].length - 1))
+    ] || imagesByCategory.other;
   imageElement.alt = itemName;
   imageElement.className = "itemImage";
   element.appendChild(imageElement);

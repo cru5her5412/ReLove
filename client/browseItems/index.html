@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../src/style.css" />
   </head>
   <body>
-      <header>
+    <header>
       <nav aria-label="Main Site Navigation">
         <ul>
           <li><a href="/">Home</a></li>
@@ -18,50 +18,52 @@
         </ul>
       </nav>
     </header>
-    
-<main class="browse-main">
-  <div class="filters-bar">
-    <div class="search">
-      <label for="searchBar">Search Items</label>
-      <input name="searchBar" id="searchBar" type="text" placeholder="Search..." />
-    </div>
 
-    <div class="filtersWrapper">
-      <div class="dropdown">
-        <label for="itemCategory">Category</label>
-        <select name="itemCategory" id="itemCategory">
-          <option value="">Select a Category</option>
-          <option value="furniture">Furniture</option>
-          <option value="electronics">Electronics</option>
-          <option value="clothing">Clothing</option>
-          <option value="books">Books</option>
-          <option value="toys-and-games">Toys & Games</option>
-          <option value="home-and-garden">Home & Garden</option>
-          <option value="sport-and-recreation">Sport & Recreation</option>
-          <option value="other">Other</option>
-        </select>
+    <main class="browse-main">
+      <div class="filters-bar">
+        <div class="search">
+          <label for="searchBar">Search Items</label>
+          <input
+            name="searchBar"
+            id="searchBar"
+            type="text"
+            placeholder="Search..."
+          />
+        </div>
+
+        <div class="filtersWrapper">
+          <div class="dropdown">
+            <label for="itemCategory">Category</label>
+            <select name="itemCategory" id="itemCategory">
+              <option value="">Select a Category</option>
+              <option value="furniture">Furniture</option>
+              <option value="electronics">Electronics</option>
+              <option value="clothing">Clothing</option>
+              <option value="books">Books</option>
+              <option value="toysAndGames">Toys & Games</option>
+              <option value="homeAndGarden">Home & Garden</option>
+              <option value="sportAndRecreation">Sport & Recreation</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="dropdown">
+            <label for="itemCondition">Condition</label>
+            <select name="itemCondition" id="itemCondition">
+              <option value="">Select Condition</option>
+              <option value="new">New</option>
+              <option value="like-new">Excellent</option>
+              <option value="used-good">Good</option>
+              <option value="used-fair">Fair</option>
+              <option value="for-parts">Poor</option>
+            </select>
+          </div>
+        </div>
       </div>
 
-      <div class="dropdown">
-        <label for="itemCondition">Condition</label>
-        <select name="itemCondition" id="itemCondition">
-          <option value="">Select Condition</option>
-          <option value="new">New</option>
-          <option value="like-new">Excellent</option>
-          <option value="used-good">Good</option>
-          <option value="used-fair">Fair</option>
-          <option value="for-parts">Poor</option>
-        </select>
+      <div class="browse-cards-wrapper">
+        <div id="browseContainer"></div>
       </div>
-    </div>
-  </div>
-
-  <div class="browse-cards-wrapper">
-    <div id="browseContainer">
-     
-    </div>
-  </div>
-</main>
-
+    </main>
   </body>
 </html>
