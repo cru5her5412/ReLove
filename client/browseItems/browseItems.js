@@ -91,8 +91,11 @@ element.appendChild(imageElement);
 
   const itemNameElement = document.createElement("h3");
   itemNameElement.textContent = itemName;
-
-  itemNameElement.className = "itemName";
+ if (claimed == false) {
+    itemNameElement.className = "itemName";
+  } else if (claimed == true) {
+    itemNameElement.className = `itemName claimed claimID${dbID}`;
+  }
   element.appendChild(itemNameElement);
 
   const itemCategoryElement = document.createElement("p");
@@ -108,44 +111,7 @@ element.appendChild(itemCategoryElement);
 // ===================== Callum
 Category
 
-  if (claimed == false) {
-    itemNameElement.className = "itemName";
-  } else if (claimed == true) {
-    itemNameElement.className = `itemName claimed claimID${dbID}`;
-  }
-  const itemCategoryElement = document.createElement("h4");
-
-  itemCategoryElement.textContent = itemCategory;
-  itemCategoryElement.className = "itemCategory";
-  const itemConditionElement = document.createElement("h4");
-  itemConditionElement.textContent = itemCondition;
-  itemConditionElement.className = "itemCondition";
-
-  const itemDescriptionElement = document.createElement("p");
-  itemDescriptionElement.textContent = itemDescription;  
-  itemDescriptionElement.className = "itemDescription";
-  const userLocationElement = document.createElement("h4");
-  userLocationElement.textContent = userLocation;
-  userLocationElement.className = "userLocation";
-  const dateElement = document.createElement("h4");
-  dateElement.textContent = date;
-  dateElement.className = "dateAdded";
-  const claimButton = document.createElement("button");
-  claimButton.id = `buttonNo${i}`;
-  claimButton.textContent = "Claim";
-  claimButton.className = "claimButton";
-  claimButton.addEventListener("click", function () {
-    //creates listener for each button with their database id as an argument
-    itemClaim(dbID);
-  });
-  element.appendChild(itemNameElement); //Adding rest of elements as children of main element in the DOM
-  element.appendChild(itemCategoryElement);
-  element.appendChild(itemConditionElement);
-  element.appendChild(itemDescriptionElement);
-  element.appendChild(userLocationElement);
-  element.appendChild(dateElement);
-  element.appendChild(claimButton);
-}
+ 
 // ============================
 
 // just rearranged 
