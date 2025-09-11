@@ -1,3 +1,20 @@
+//
+// IMPORTING IMAGES
+
+import bookImage from "./images/book.webp";
+import clothImage from "./images/cloth.webp";
+import gardenImage from "./images/garden.webp";
+import jacketImage from "./images/jacket.webp";
+import pokemonImage from "./images/pokemon.jpg";
+import robotImage from "./images/robot.webp";
+import shirtImage from "./images/shirt.webp";
+import sofaImage from "./images/sofa.webp";
+import toyImage from "./images/toy.jpg";
+import sportImage from "./images/sport.webp";
+//
+//
+//
+
 // Active Navlinks
 
 document.querySelectorAll("nav a").forEach((link) => {
@@ -8,7 +25,6 @@ document.querySelectorAll("nav a").forEach((link) => {
 });
 
 //================================================
-
 
 // DOM Elements
 const browseContainer = document.getElementById("browseContainer");
@@ -22,7 +38,7 @@ let claimedIds = JSON.parse(localStorage.getItem("userClaimedIds")) || [];
 //  fetched item data
 let parsedData = [];
 
-//  Fetch items 
+//  Fetch items
 async function createBrowseList() {
   const response = await fetch("https://relove-e3km.onrender.com/view-items");
   parsedData = await response.json();
@@ -68,24 +84,19 @@ function createCustomElement(
   browseContainer.appendChild(element);
 
   const imagesByCategory = {
-    furniture: ["./images/sofa.jpg"],
-    electronics: ["./images/robot.jpg"],
-    clothing: [
-      "./images/shirt.jpg",
-      "./images/jacket.jpg",
-      "./images/cloth.jpg",
-    ],
-    books: ["./images/book.jpg"],
-    toysAndGames: ["./images/toy.jpg"],
-    homeAndGarden: ["./images/garden.jpg"],
-    sportAndRecreation: ["./images/sport.jpg"],
-    other: ["./images/pokemon.jpg"],
-    test: ["./images/pokemon.jpg"],
+    furniture: [sofaImage],
+    electronics: [robotImage],
+    clothing: [shirtImage, jacketImage, clothImage],
+    books: [bookImage],
+    toysAndGames: [toyImage],
+    homeAndGarden: [gardenImage],
+    sportAndRecreation: [sportImage],
+    other: [pokemonImage],
+    test: [pokemonImage],
   };
 
   const imageElement = document.createElement("img");
   imageElement.src =
-
     imagesByCategory[itemCategory][
       Math.floor(Math.random() * (imagesByCategory[itemCategory].length - 1))
     ] || imagesByCategory.other;
@@ -169,11 +180,18 @@ function searchAndFilterBrowseList() {
       .querySelector(".itemCondition")
       .textContent.toLowerCase();
 
-    const nameMatch = nameText.includes(itemSearchBar.value.toLowerCase()) || itemSearchBar.value === "";
-    const categoryMatch = categoryText.includes(itemFilterCategory.value.toLowerCase()) || itemFilterCategory.value === "";
-    const conditionMatch = conditionText.includes(itemFilterCondition.value.toLowerCase()) || itemFilterCondition.value === "";
+    const nameMatch =
+      nameText.includes(itemSearchBar.value.toLowerCase()) ||
+      itemSearchBar.value === "";
+    const categoryMatch =
+      categoryText.includes(itemFilterCategory.value.toLowerCase()) ||
+      itemFilterCategory.value === "";
+    const conditionMatch =
+      conditionText.includes(itemFilterCondition.value.toLowerCase()) ||
+      itemFilterCondition.value === "";
 
-    currElement.style.display = nameMatch && categoryMatch && conditionMatch ? "block" : "none";
+    currElement.style.display =
+      nameMatch && categoryMatch && conditionMatch ? "block" : "none";
   }
 }
 
