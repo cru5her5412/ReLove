@@ -191,11 +191,11 @@ footer {
 }
 
 
-.form-container:hover {
+/* .form-container:hover {
   transform: translateY(-4px);
   box-shadow: 0 14px 40px rgba(0, 0, 0, 0.2), 0 8px 16px rgba(0, 0, 0, 0.15),
     0 0 2px rgba(0, 0, 0, 0.07);
-}
+} */
 
 
 .form-container::before,
