@@ -95,14 +95,14 @@ function createCustomElement(
     test: [pokemonImage],
   };
 
-  const imageElement = document.createElement("img");
-  imageElement.src =
-    imagesByCategory[itemCategory][
-      Math.floor(Math.random() * (imagesByCategory[itemCategory].length - 1))
-    ] || imagesByCategory.other;
-  imageElement.alt = itemName;
-  imageElement.className = "itemImage";
-  element.appendChild(imageElement);
+  const categoryImages = imagesByCategory[itemCategory] || imagesByCategory.other;
+const randomImage = categoryImages[Math.floor(Math.random() * categoryImages.length)];
+const imageElement = document.createElement("img");
+imageElement.src = randomImage;
+imageElement.alt = itemName;
+imageElement.className = "itemImage";
+element.appendChild(imageElement);
+
 
   const itemNameElement = document.createElement("h3");
   itemNameElement.textContent = itemName;
