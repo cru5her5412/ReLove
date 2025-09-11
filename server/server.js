@@ -48,5 +48,6 @@ async function viewItems(request, response) {
 async function claimItem(request, response) {
   const body = request.body;
   console.log(body.i);
-  //db.query(`UPDATE relove SET claimed = true WHERE id=${body.i}`);
+  db.query(`UPDATE relovedatabase SET claimed = true WHERE id=${body.i}`);
+  response.json("Item marked as claimed");
 }
