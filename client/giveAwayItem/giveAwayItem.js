@@ -93,6 +93,8 @@ form.addEventListener("submit", async function (event) {
     body: JSON.stringify({ formData }),
   });
 
+  form.reset();
+
   // Trigger popup modal message code
   if (response.ok) {
     popupModal.classList.add("show"); // A wild popup appears!
