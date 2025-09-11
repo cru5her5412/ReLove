@@ -213,7 +213,6 @@ async function itemClaim(dbId) {
   // Refresh UI to reflect claimed status
   createBrowseList();
 }
-localStorage.setItem("userClaimedIds", JSON.stringify([4, 10, 12]));
 
 // ✅ Initialize
 createBrowseList();
