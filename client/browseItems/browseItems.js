@@ -72,18 +72,18 @@ function createCustomElement(
   browseContainer.appendChild(element); //adding container element to DOM
 
   const imagesByCategory = {
-    furniture: "./browseItems/images/sofa.jpg",
-    electronics: "./browseItems/images/robot.jpg",
+    furniture: "./images/sofa.jpg",
+    electronics: "./images/robot.jpg",
     clothing: [
-      "./browseItems/images/shirt.jpg",
-      "./browseItems/images/jacket.jpg",
-      "./browseItems/images/cloth.jpg",
+      "./images/shirt.jpg",
+      "./images/jacket.jpg",
+      "./images/cloth.jpg",
     ],
-    books: "./browseItems/images/book.jpg",
-    "toys-and-games": "./browseItems/images/toys.jpg",
-    "home-and-garden": "./browseItems/images/garden.jpg",
-    "sport-and-recreation": "./browseItems/images/sport.jpg",
-    other: "./browseItems/images/pokemon.jpg",
+    books: "./images/book.jpg",
+    "toys-and-games": "./images/toys.jpg",
+    "home-and-garden": "./images/garden.jpg",
+    "sport-and-recreation": "./images/sport.jpg",
+    other: "./images/pokemon.jpg",
   };
 
   const imageElement = document.createElement("img");
