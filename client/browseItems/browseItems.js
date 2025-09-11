@@ -68,25 +68,27 @@ function createCustomElement(
   browseContainer.appendChild(element);
 
   const imagesByCategory = {
-    furniture: "./browseItems/images/sofa.jpg",
-    electronics: "./browseItems/images/robot.jpg",
+    furniture: ["./images/sofa.jpg"],
+    electronics: ["./images/robot.jpg"],
     clothing: [
-      "./browseItems/images/shirt.jpg",
-      "./browseItems/images/jacket.jpg",
-      "./browseItems/images/cloth.jpg",
+      "./images/shirt.jpg",
+      "./images/jacket.jpg",
+      "./images/cloth.jpg",
     ],
-    books: "./browseItems/images/book.jpg",
-    "toys-and-games": "./browseItems/images/toys.jpg",
-    "home-and-garden": "./browseItems/images/garden.jpg",
-    "sport-and-recreation": "./browseItems/images/sport.jpg",
-    other: "./browseItems/images/pokemon.jpg",
+    books: ["./images/book.jpg"],
+    toysAndGames: ["./images/toy.jpg"],
+    homeAndGarden: ["./images/garden.jpg"],
+    sportAndRecreation: ["./images/sport.jpg"],
+    other: ["./images/pokemon.jpg"],
+    test: ["./images/pokemon.jpg"],
   };
 
   const imageElement = document.createElement("img");
   imageElement.src =
-    Array.isArray(imagesByCategory[itemCategory])
-      ? imagesByCategory[itemCategory][Math.floor(Math.random() * 3)]
-      : imagesByCategory[itemCategory] || imagesByCategory.other;
+
+    imagesByCategory[itemCategory][
+      Math.floor(Math.random() * (imagesByCategory[itemCategory].length - 1))
+    ] || imagesByCategory.other;
   imageElement.alt = itemName;
   imageElement.className = "itemImage";
   element.appendChild(imageElement);
