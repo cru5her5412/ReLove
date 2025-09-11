@@ -10,7 +10,7 @@ import robotImage from "./images/robot.webp";
 import shirtImage from "./images/shirt.webp";
 import sofaImage from "./images/sofa.webp";
 import toyImage from "./images/toy.jpg";
-import sportImage from "./images/sport.webp";
+import sportImage from "./images/sport.jpg";
 //
 //
 //
