@@ -96,6 +96,7 @@ form.addEventListener("submit", async function (event) {
   // Trigger popup modal message code
   if (response.ok) {
     popupModal.classList.add("show"); // A wild popup appears!
+    closePopupButton.focus(); // Accessibility focus on the close button
 
     //Confetti are triggered
     triggerConfetti(10000, 7);

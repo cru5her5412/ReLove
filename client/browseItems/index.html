@@ -21,7 +21,7 @@
 
     <main class="browse-main">
       <div class="filters-bar">
-        <div class="search">
+        <div class="search" role="search">
           <label for="searchBar">Search Items</label>
           <input
             name="searchBar"
@@ -35,7 +35,7 @@
           <div class="dropdown">
             <label for="itemCategory">Category</label>
             <select name="itemCategory" id="itemCategory">
-              <option value="">Select a Category</option>
+              <option value="" disabled selected>Select a Category</option>
               <option value="furniture">Furniture</option>
               <option value="electronics">Electronics</option>
               <option value="clothing">Clothing</option>
@@ -47,11 +47,10 @@
             </select>
           </div>
 
-
           <div class="dropdown">
             <label for="itemCondition">Condition</label>
             <select name="itemCondition" id="itemCondition">
-              <option value="">Select Condition</option>
+              <option value="" disabled selected>Select Condition</option>
               <option value="new">New</option>
               <option value="like-new">Excellent</option>
               <option value="used-good">Good</option>
@@ -63,10 +62,10 @@
       </div>
 
       <div class="browse-cards-wrapper">
-        <div id="browseContainer"></div>
+        <div id="browseContainer" aria-live="polite"></div>
       </div>
     </main>
- <!-- Footer -->
+    <!-- Footer -->
     <footer>
       <p>&copy; 2025 ReLove. All rights reserved.</p>
     </footer>
