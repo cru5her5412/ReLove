@@ -17,6 +17,16 @@ const itemFilterCondition = document.getElementById("itemCondition"); //select w
 const itemFilterCategory = document.getElementById("itemCategory"); //select where you can pick a category to filter by
 const itemSearchBar = document.getElementById("searchBar"); //search bar input element
 let parsedData; //initialised to become global variable
+let claimedIds = localStorage.getItem("userClaimedIds"); //get claimed ids from localStorage
+
+let claimedId = []; //sets returned value from next for loop to prevent the output not being defined if no local storage
+if (claimedIds) {
+  //if something obtained from local storage, add all numbers in the list (formatted with commas)
+  claimedIds = JSON.parse(claimedIds);
+  for (let j = 0; j < claimedIds.length; j++) {
+    claimedId.push(claimedIds[j]);
+  }
+}
 async function createBrowseList() {
   const dataFromDatabase = await fetch(
     "https://relove-e3km.onrender.com/view-items"
@@ -31,7 +41,8 @@ async function createBrowseList() {
       parsedData[i].userlocation,
       parsedData[i].created_at,
       i,
-      parsedData[i].id
+      parsedData[i].id,
+      parsedData[i].claimed
     );
   }
   setInterval(searchAndFilterBrowseList, 500); //starts refreshing search and filters every 0.5 seconds
@@ -44,7 +55,8 @@ function createCustomElement(
   userLocation,
   date,
   i,
-  dbID
+  dbID,
+  claimed
 ) {
   //takes input of all parts of database we want to show on a card for collection, setting text content to be data from the database
   const element = document.createElement("div");
@@ -53,7 +65,11 @@ function createCustomElement(
   browseContainer.appendChild(element); //adding container element to DOM
   const itemNameElement = document.createElement("h3");
   itemNameElement.textContent = itemName;
-  itemNameElement.className = "itemName";
+  if (claimed == false) {
+    itemNameElement.className = "itemName";
+  } else if (claimed == true) {
+    itemNameElement.className = `itemName claimed claimID${dbID}`;
+  }
   const itemCategoryElement = document.createElement("h4");
   itemCategoryElement.textContent = itemCategory;
   itemCategoryElement.className = "itemCategory";
@@ -96,7 +112,8 @@ function searchAndFilterBrowseList() {
       (currElement.children[1].textContent == itemFilterCategory.value ||
         itemFilterCategory.value == "") &&
       (currElement.children[2].textContent == itemFilterCondition.value ||
-        itemFilterCondition.value == "")
+        itemFilterCondition.value == "") &&
+      (parsedData[i].claimed == false || claimedId.includes(parsedData[i].id))
     ) {
       //if(current element text content contains the text in the search bar && the text content of the category element matches the category filter (or it is blank) && the text content of the category element matches the condition filter (or it is blank) ){set display to block}
       currElement.style.display = "block";
@@ -105,14 +122,27 @@ function searchAndFilterBrowseList() {
     }
   }
 }
-async function itemClaim(i) {
+async function itemClaim(dbId) {
   const sendingClaimUpdate = fetch(
     "https://relove-e3km.onrender.com/claim-item-update",
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ i }),
+      body: JSON.stringify({ dbId }),
     }
   ); //sends a post to the server address '/claim-item-update' containing the id of the element that was claimed
+  let arrayToLocalStorage = [];
+  let toAddtoArray = localStorage.getItem("userClaimedIds");
+  if (!toAddtoArray) {
+    toAddtoArray = [];
+  }
+  toAddtoArray = JSON.parse(toAddtoArray);
+  for (let i = 0; i < toAddtoArray.length; i++) {
+    arrayToLocalStorage.push(toAddtoArray[i]);
+  }
+  if (!arrayToLocalStorage.includes(dbId)) {
+    arrayToLocalStorage.push(dbId);
+  }
+  localStorage.setItem("userClaimedIds", JSON.stringify(arrayToLocalStorage));
 }
 createBrowseList();
