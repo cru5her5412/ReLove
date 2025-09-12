@@ -1,7 +1,7 @@
 
 # ♻️ ReLove - Give love, Get love
 
-**ReLove** is a full-stack web application that allows users to give away or browse preloved items in their community all while reducing waste and supporting a more sustainable future. Users can post items they no longer need and others can browse and contact the item owners via email or phone. It's a simple, community-driven platform designed to promote reuse and reduce waste and use  preloved items in a trusted, local network.. 
+**ReLove** is a full-stack web application that allows users to give away or browse preloved items in their community all while reducing waste and supporting a more sustainable future. Users can post items they no longer need and others can browse and claim the item. It's a simple, community-driven platform designed to promote reuse and reduce waste within a trusted, local network.
 
 
 ---
@@ -15,7 +15,7 @@
 
 ## 🧠 Problem Domain
 
-Millions of usable items are thrown away every year while others in the same community may be in need. PreLove bridges this gap by creating a space for people to easily give away items they no longer need, helping others and the planet.
+Millions of usable items are thrown away every year while others in the same community may be in need. ReLove bridges this gap by creating a space for people to easily give away items they no longer need, helping others while protecting the planet.
 
 ---
 
@@ -75,7 +75,7 @@ Millions of usable items are thrown away every year while others in the same com
 
 - 🧾 Post items to give away via a simple form
 - 📦 Browse available preloved items
-- 📞 Contact item owners via mail or phone
+- 📞 Claim item
 - ✅ Fully responsive design
 - 📁 Connected to a live PostgreSQL database
 
@@ -89,7 +89,7 @@ Millions of usable items are thrown away every year while others in the same com
 
 - Problems with image paths due to folder restructuring, causing broken images until paths were correctly updated.
 
--After persistence and teamwork, we successfully resolved all these issues and improved the overall project stability.
+- After persistence and teamwork, we successfully resolved all these issues and improved the overall project stability.
 
 ---
 ## 💡 Our Solution
@@ -120,7 +120,7 @@ Encourages sustainability through sharing and reusing instead of discarding.
 
 ## 🤝 Collaboration 
 
-* **Version Control:** We used GitHub 🐙 for source code management and collaboration. Branching strategies were followed to keep features and fixes organized and ensure smooth code reviews and merges.
+* **Version Control:** We used GitHub  🐙 for source code management and collaboration. Branching strategies were followed to keep features and fixes organized and ensure smooth code reviews and merges.
 
 * **Task Management:** 📋**Trello** was utilized to manage tasks and track progress effectively. This helped the team stay aligned with priorities and deadlines.
 
@@ -132,11 +132,18 @@ Encourages sustainability through sharing and reusing instead of discarding.
 
 - **Environmental impact:** One person's unused item is another's new beginning.
 
-- **Future:** 
+- 🚀 **Future:** 
 
+- 📸 Enable users to upload their own images, supporting both direct storage and external URLs.
+- ✏️ (Planned) Edit or delete posted items by owners
+- 💬 Show a pop-up with contact details when the CLAIM button is clicked.
+- 💬 Implement a messaging or contact form feature to facilitate direct communication between users.
 
+- 🔄 Add an "All" option to category and condition filters for easier browsing.
 
+- 📍 Implement location-based filtering to find items nearby.
 
+- 🗺️ Integrate an interactive map to visually display item locations for better user experience.
 
 - Expand to different areas
 
@@ -145,7 +152,7 @@ Encourages sustainability through sharing and reusing instead of discarding.
 ## 📚 References & Resources
 
 
-- [Javasript for active nav links](https://www.youtube.com/watch?v=bEOwXmd9Mc8)
+- [Javascript for active nav links](https://www.youtube.com/watch?v=bEOwXmd9Mc8)
 - [Active Navlinks](https://stackoverflow.com/questions/7205032add-active-class-to-navbar-element-when-clicked)
 - [Form Shadow and style](https://codepen.io/haibnu/pen/DrVweV)
 - [Box-Shadow](https://css-tricks.com/almanac/properties/b/box-shadow/)
@@ -157,7 +164,8 @@ Encourages sustainability through sharing and reusing instead of discarding.
 - [HTML Form Standards](https://html.spec.whatwg.org/multipage/forms.html#categories)
 - [Confetti Modal Pop Up](https://www.a11yproject.com/checklist/)
 - [Confetti Animation](https://webdesign.tutsplus.com/confetti-animation-canvas-javascript--cms-109130t)
-- [Animating Confetti in JavaScript](https://adarsh-gupta.medium.comanimating-confetti-in-javascript-a-step-by-step-guide-34b23c31d8e0)
+- [Animating Confetti in JavaScript](https://adarsh-gupta.medium.comanimating-confetti-in-javascript-a-step-by-step-guide-34b23c31d8e0
+)
 - [Vite Guide](https://vite.dev/guide/build.html#multi-page-app)
 - [Confetti Animation](https://www.youtube.com/watch?v=JPD62_G2BFQ)
 - [Effects](https://devlawrence.hashnode.dev/lets-build-a-confetti-effect-with-vanilla-javascript?utm_source=chatgpt.com)
