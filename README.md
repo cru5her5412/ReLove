@@ -1,15 +1,14 @@
-
 # ♻️ ReLove - Give love, Get love
 
 **ReLove** is a full-stack web application that allows users to give away or browse preloved items in their community all while reducing waste and supporting a more sustainable future. Users can post items they no longer need and others can browse and claim the item. It's a simple, community-driven platform designed to promote reuse and reduce waste within a trusted, local network.
 
+---
 
 ---
 
 ## 🚀 Live Demo
 
 🔗 [ReLove - Give love, Get love](https://relovehomepage.onrender.com/)
-
 
 ---
 
@@ -32,10 +31,20 @@ Millions of usable items are thrown away every year while others in the same com
 
 ## 🧍‍♀️🧍 User Stories
 
-- As a **first-time visitor**, I want to see how the platform works so I can understand how to use it.
-- As a **user**, I want to give away items by filling out a form so I can help others.
-- As a **user**, I want to browse available items so I can find what I need.
-- As a **recipient**, I want to contact the item owner directly via email or phone so I can ask for the item.
+- As a first-time visitor, I want to easily and quickly understand how the platform works
+  so I know how to use it.
+
+- As a user, I want to give away my items by filling out a form so I can help others.​
+
+- As a user, I want to browse available items.​
+
+- As a user, I want to filter items available by category/condition, so I can find what I need quicker.​
+
+- As a user, I want to easily access the website on different devices, so I can use it both on mobile and desktop.​
+
+- As a user, I want the website to be easily accessible so everyone can use it regardless of their needs.​
+
+- As a user, I want to see an item as claimed, so that others know it’s no longer available.
 
 ---
 
@@ -45,25 +54,28 @@ Millions of usable items are thrown away every year while others in the same com
 ![Give Away Items Wireframe](./Wireframe2.jpg)
 ![Browse Items Wireframe](./Wireframe3.jpg)
 
-
 ---
 
 ## 🛠️ Tech Stack
 
 **Frontend:**
+
 - HTML
 - CSS
 - JavaScript (Vanilla)
 - DOM Manipulation
 
 **Backend:**
+
 - Node.js
 - Express.js
 
 **Database:**
+
 - PostgreSQL via Supabase
 
 **Other Tools:**
+
 - Git & GitHub (Version Control)
 - Trello (Project Management)
 - Render (Deployment)
@@ -92,20 +104,21 @@ Millions of usable items are thrown away every year while others in the same com
 - After persistence and teamwork, we successfully resolved all these issues and improved the overall project stability.
 
 ---
+
 ## 💡 Our Solution
 
 ReLove – A community-first, full-stack platform to reduce waste and reconnect people.
 
 **🌍 What ReLove Does:**
 
-* **Facilitates Local Reuse**
-Post and discover preloved items within your area, reducing environmental impact.
+- **Facilitates Local Reuse**
+  Post and discover preloved items within your area, reducing environmental impact.
 
-* **Simplifies Giving & Finding**
-A user-friendly platform to give away what you no longer need — or find exactly what you do.
+- **Simplifies Giving & Finding**
+  A user-friendly platform to give away what you no longer need — or find exactly what you do.
 
-* **Promotes Circular Living**
-Encourages sustainability through sharing and reusing instead of discarding.
+- **Promotes Circular Living**
+  Encourages sustainability through sharing and reusing instead of discarding.
 
 **✅ Why It Works:**
 
@@ -115,16 +128,15 @@ Encourages sustainability through sharing and reusing instead of discarding.
 
 - No complex listings — just real people helping real people
 
-
 ---
 
-## 🤝 Collaboration 
+## 🤝 Collaboration
 
-* **Version Control:** We used GitHub  🐙 for source code management and collaboration. Branching strategies were followed to keep features and fixes organized and ensure smooth code reviews and merges.
+- **Version Control:** We used GitHub 🐙 for source code management and collaboration. Branching strategies were followed to keep features and fixes organized and ensure smooth code reviews and merges.
 
-* **Task Management:** 📋**Trello** was utilized to manage tasks and track progress effectively. This helped the team stay aligned with priorities and deadlines.
+- **Task Management:** 📋**Trello** was utilized to manage tasks and track progress effectively. This helped the team stay aligned with priorities and deadlines.
 
-* **Communication:** We held daily stand-up meetings ⏰ to discuss progress, blockers, and plan for the day. This ensured transparency and fostered effective collaboration among team members.
+- **Communication:** We held daily stand-up meetings ⏰ to discuss progress, blockers, and plan for the day. This ensured transparency and fostered effective collaboration among team members.
 
 ---
 
@@ -132,7 +144,7 @@ Encourages sustainability through sharing and reusing instead of discarding.
 
 - **Environmental impact:** One person's unused item is another's new beginning.
 
-- 🚀 **Future:** 
+- 🚀 **Future:**
 
 - 📸 Enable users to upload their own images, supporting both direct storage and external URLs.
 - ✏️ (Planned) Edit or delete posted items by owners
@@ -149,23 +161,61 @@ Encourages sustainability through sharing and reusing instead of discarding.
 
 ---
 
-## 📚 References & Resources
+## 📋 Starting Guide
 
+1. At the top-right, above the files, click on the green button saying "Code" to show the drop-down.
+
+2. Choose the preferred link that you want to use to clone the project to your own machine.
+
+3. On your machine's terminal, make a new folder which will house the project locally:
+
+```console
+git clone [COPIED LINK HERE]
+```
+
+4. Open your IDE, such as VSCode:
+
+```console
+code .
+```
+
+5. Take some time to look through the folders and familiarise yourself with where everything is. In your terminal, move to the client folder:
+
+```console
+cd client
+```
+
+6. Now install all dependencies needed:
+
+```console
+npm install
+```
+
+Now you can develop locally by running:
+
+```console
+npm run dev
+```
+
+---
+
+---
+
+## 📚 References & Resources
 
 - [Javascript for active nav links](https://www.youtube.com/watch?v=bEOwXmd9Mc8)
 - [Active Navlinks](https://stackoverflow.com/questions/7205032add-active-class-to-navbar-element-when-clicked)
 - [Form Shadow and style](https://codepen.io/haibnu/pen/DrVweV)
 - [Box-Shadow](https://css-tricks.com/almanac/properties/b/box-shadow/)
 - [Dummy Data](https://www.youtube.com/watch?v=NaDNgroJ7Cg)
--  [Responsive Products](https://www.youtube.com/watch?v=F24tAMLoOEw)
+- [Responsive Products](https://www.youtube.com/watch?v=F24tAMLoOEw)
 - [Images in Javascript](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/Image)
 - [Images in Javascript](https://www.youtube.com/watch?v=HWHfzt1kp84)
 - [Javascript Objects](https://www.w3schools.com/js/js_objects.asp)
 - [HTML Form Standards](https://html.spec.whatwg.org/multipage/forms.html#categories)
 - [Confetti Modal Pop Up](https://www.a11yproject.com/checklist/)
 - [Confetti Animation](https://webdesign.tutsplus.com/confetti-animation-canvas-javascript--cms-109130t)
-- [Animating Confetti in JavaScript](https://adarsh-gupta.medium.comanimating-confetti-in-javascript-a-step-by-step-guide-34b23c31d8e0
-)
+- [Animating Confetti in JavaScript](https://adarsh-gupta.medium.comanimating-confetti-in-javascript-a-step-by-step-guide-34b23c31d8e0)
 - [Vite Guide](https://vite.dev/guide/build.html#multi-page-app)
 - [Confetti Animation](https://www.youtube.com/watch?v=JPD62_G2BFQ)
 - [Effects](https://devlawrence.hashnode.dev/lets-build-a-confetti-effect-with-vanilla-javascript?utm_source=chatgpt.com)
